@@ -2,7 +2,7 @@ const containerCards = document.querySelector(".container_pokemons");
 const inptSearch = document.querySelector(".card-search");
 const title = document.querySelector(".card");
 
-const URL_API = "https://pokeapi.co/api/v2/pokemon?limit=5";
+const URL_API = "https://pokeapi.co/api/v2/pokemon?limit=6";
 
 const listPokemons = [];
 
