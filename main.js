@@ -2,7 +2,7 @@ const containerCards = document.querySelector(".container_pokemons");
 const inptSearch = document.querySelector(".card-search");
 const title = document.querySelector(".card");
 
-const URL_API = "https://pokeapi.co/api/v2/pokemon?limit=10";
+const URL_API = "https://pokeapi.co/api/v2/pokemon?limit=5";
 
 const listPokemons = [];
 
@@ -19,7 +19,9 @@ const getPokemons = async () => {
         experience: dataPokemon.data.base_experience,
         abilities: dataPokemon.data.abilities,
         id: dataPokemon.data.id,
-        types: dataPokemon.data.types
+        types: dataPokemon.data.types,
+        icons: dataPokemon.data.sprites.versions["generation-v"]["black-white"].animated.front_default
+
         };
         listPokemons.push(newPokemon);
         if (index + 1 === response.data.results.length) {
@@ -47,6 +49,7 @@ const renderPokemons = (arrayPokemons) => {
             ${renderAbilities(element.abilities)}
             <span class="pokemonId">${element.id}</span>
             ${renderTypes(element.types)}
+            <span class="pokemonicons">${element.icons}</span>
             </div>
             </figure>
             `;
@@ -70,27 +73,30 @@ const renderPokemons = (arrayPokemons) => {
         const itemWeight = item.querySelector(".pokemonWeight").textContent;
         const itemHeight = item.querySelector(".pokemonHeight").textContent;
         const itemExperience = item.querySelector(".pokemonExperience").textContent;
-        //const itemAbilities= item.querySelector(".pokemonAbilities").fun;
+        const itemAbilities= item.querySelector(".card__abilities").textContent;
+        const itemType = item.querySelector(".card__type").textContent;
         const itemId= item.querySelector(".pokemonId").textContent;
         const itemImage = item.querySelector(".pokemon-img").src;
+        const itemIcons = item.querySelector(".pokemonicons").textContent;
+        console.log(itemAbilities, itemType);
 
-        addItemToSection(listPokemons, itemImage,itemExperience,itemId,itemName,itemWeight,itemHeight);
+        addItemToSection(itemAbilities, itemImage,itemExperience,itemId,itemName,itemWeight,itemHeight,itemIcons,itemType);
     }
 
-    function addItemToSection(listPokemons, itemImage,itemExperience,itemId,itemName,itemWeight,itemHeight) {
+    function addItemToSection(itemAbilities, itemImage,itemExperience,itemId,itemName,itemWeight,itemHeight,itemIcons,itemType) {
     container.innerHTML = "";
 
         container.innerHTML += `
         <article class="title_img__container">
             <div class="title-container">
                 <figure>
-                    <img src="https://static.vecteezy.com/system/resources/previews/001/188/706/original/flame-png.png" alt="llama">
+                    <img src="${itemImage}" alt="llama">
                 </figure>
                 <h2>${itemName}</h2>
             </div>
             
             <figure class="image-pokemon">
-                <img src="${itemImage}" alt="${itemName}"  class="img-pokemons">
+                <img src="${itemIcons}" alt="${itemName}"  class="img-pokemons">
             </figure>
         </article>
     
@@ -108,12 +114,11 @@ const renderPokemons = (arrayPokemons) => {
     
             <div class="row-info">
                 <div class="row-item">
-                    <p class="info-text">xxx</p>
+                    <p class="info-text">${itemType}</p>
                     <p class="title-info">TYPE</p>
                 </div>
                 <div class="row-item">
-                
-                ${renderAbilities(listPokemons[0].abilities)}
+                <p class="info-text">${itemAbilities}</p>
                     <p class="title-info">HABILITY</p>
                 </div>
             </div>
@@ -139,7 +144,6 @@ const renderAbilities = (arrayAbilities) => {
         abilitiesList += `
             <span class="card__abilities">${ability.ability.name}</span>
             `;
-        console.log(ability)
     });
     return abilitiesList;
 };
