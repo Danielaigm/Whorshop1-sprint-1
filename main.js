@@ -1,8 +1,7 @@
 const containerCards = document.querySelector(".container_pokemons");
 const inptSearch = document.querySelector(".card-search");
-const title = document.querySelector(".card");
 
-const URL_API = "https://pokeapi.co/api/v2/pokemon?limit=100";
+const URL_API = "https://pokeapi.co/api/v2/pokemon?limit=3";
 
 const listPokemons = [];
 
@@ -27,7 +26,7 @@ const getPokemons = async () => {
         if (index + 1 === response.data.results.length) {
         console.log(listPokemons);
         renderPokemons(listPokemons);
-        filterName(inptSearch, title);
+        filterName(inptSearch);
         }
     });
 };
@@ -102,10 +101,12 @@ const renderPokemons = (arrayPokemons) => {
     
         <article class="info-pokemon">
             <div class="row-info">
+            <i class="fa-regular fa-address-card iconInfo"></i>
                 <div class="row-item">
                     <p class="info-text">${itemId}</p>
                     <p class="title-info">No.</p>
                 </div>
+                <i class="fa-solid fa-ranking-star iconInfo"></i>
                 <div class="row-item">
                     <p class="info-text">1${itemExperience}</p>
                     <p class="title-info">LEVEL</p>
@@ -113,20 +114,24 @@ const renderPokemons = (arrayPokemons) => {
             </div>
     
             <div class="row-info">
+            <i class="fa-solid fa-hurricane iconInfo"></i>
                 <div class="row-item">
                     <p class="info-text">${itemType}</p>
                     <p class="title-info">TYPE</p>
                 </div>
+                <i class="fa-solid fa-wand-magic-sparkles iconInfo"></i>
                 <div class="row-item">
                 <p class="info-text">${itemAbilities}</p>
                     <p class="title-info">HABILITY</p>
                 </div>
             </div>
             <div class="row-info">
+                <i class="fa-solid fa-text-height iconInfo"></i>
                 <div class="row-item">
                     <p class="info-text">${itemHeight} m</p>
                     <p class="title-info">HEIGHT</p>
                 </div>
+                <i class="fa-solid fa-weight-scale iconInfo"></i>
                 <div class="row-item">
                     <p class="info-text">${itemWeight} Kg</p>
                     <p class="title-info">WEIGHT</p>
@@ -158,7 +163,7 @@ const renderTypes = (arrayTypes) => {
     return typesList;
 };
 
-const filterName = (inptSearch, title) => {
+const filterName = (inptSearch) => {
     inptSearch.addEventListener("keyup", (e) => {
         //console.log(e.target.value);
         document.querySelectorAll(".card").forEach((element) => {
