@@ -2,7 +2,7 @@ const containerCards = document.querySelector(".container_pokemons");
 const inptSearch = document.querySelector(".card-search");
 const title = document.querySelector(".card");
 
-const URL_API = "https://pokeapi.co/api/v2/pokemon?limit=6";
+const URL_API = "https://pokeapi.co/api/v2/pokemon?limit=100";
 
 const listPokemons = [];
 
@@ -90,13 +90,13 @@ const renderPokemons = (arrayPokemons) => {
         <article class="title_img__container">
             <div class="title-container">
                 <figure>
-                    <img src="${itemImage}" alt="llama">
+                    <img src="${itemIcons}" alt="llama">
                 </figure>
                 <h2>${itemName}</h2>
             </div>
             
             <figure class="image-pokemon">
-                <img src="${itemIcons}" alt="${itemName}"  class="img-pokemons">
+                <img src="${itemImage}" alt="${itemName}"  class="img-pokemons">
             </figure>
         </article>
     

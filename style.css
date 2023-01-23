@@ -199,18 +199,49 @@ background-color: var(--purple);
     .encabezado{
         justify-content: center;
     }
-    .main-container{
+    .pokemon-container{
         flex-direction: column;
         align-items: center;
     }
-    .charizard-container{
-        width: 90%;
+    .title_img__container{
         z-index: 2;
+        width: 300px;
     }
     .info-pokemon{
-        width:85%;
+        width: 110%;
         height: 60vh;
         transform: translateY(-100px);
     }
+    .image-pokemon img{
+        width: 300px;
+        height: 230px;
+        margin-bottom: 40px;
+    }
+    .title-container{
+        width: 95%;
+    }
+    footer{
+        flex-direction: column;
+        height: 380px;
+    }
+    footer figure img {
+        height: 50px;
+
+    }
+    footer figure {
+        width: 30%;
+        height: 100px;
+    }
+    footer figure span {
+        font-size: 10px;
+        padding: 5px;
+    }
+    .container_pokemons {
+        flex-wrap: wrap;
+        justify-content: center;
+
+    }
+    
+    
 }
 
